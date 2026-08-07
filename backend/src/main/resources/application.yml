@@ -18,6 +18,10 @@ spring:
       password:
       database: 0
       timeout: 3000ms
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss

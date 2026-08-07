@@ -34,6 +34,14 @@ public class DashboardWebSocket {
 
     @OnMessage
     public void onMessage(String msg, Session session) {
+        try {
+            Map<?, ?> parsed = JSON.parseObject(msg, Map.class);
+            if (parsed != null && "ping".equals(parsed.get("type"))) {
+                Map<String, Object> pong = Map.of("type", "pong", "ts", System.currentTimeMillis());
+                session.getBasicRemote().sendText(JSON.toJSONString(pong));
+                return;
+            }
+        } catch (Exception ignore) {}
         log.debug("[ws] recv: {}", msg);
     }
 
