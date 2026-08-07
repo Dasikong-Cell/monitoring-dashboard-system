@@ -1,0 +1,27 @@
+# Maven
+backend/target/
+backend/*.iml
+.idea/
+*.iml
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.idea/
+
+# Logs
+*.log
+*.pid
+*.seed
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+
+# Redis/Meta
+dump.rdb
