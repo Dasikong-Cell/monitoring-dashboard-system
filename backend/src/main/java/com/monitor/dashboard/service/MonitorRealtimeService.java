@@ -25,25 +25,25 @@ import java.util.Map;
 
 @Slf4j
 @Service
-public class RealtimeDataService {
+public class MonitorRealtimeService {
 
     private final DeviceMapper deviceMapper;
     private final DeviceMetricMapper metricMapper;
     private final AlertMapper alertMapper;
     private final AccessLogMapper accessLogMapper;
     private final CacheManager cacheManager;
-    private final DashboardService dashboardService;
-    private final AlertService alertService;
-    private final DeviceService deviceService;
+    private final MonitorDashboardService dashboardService;
+    private final MonitorAlertService alertService;
+    private final MonitorDeviceService deviceService;
 
-    public RealtimeDataService(DeviceMapper deviceMapper,
+    public MonitorRealtimeService(DeviceMapper deviceMapper,
                                DeviceMetricMapper metricMapper,
                                AlertMapper alertMapper,
                                AccessLogMapper accessLogMapper,
                                CacheManager cacheManager,
-                               DashboardService dashboardService,
-                               AlertService alertService,
-                               DeviceService deviceService) {
+                               MonitorDashboardService dashboardService,
+                               MonitorAlertService alertService,
+                               MonitorDeviceService deviceService) {
         this.deviceMapper = deviceMapper;
         this.metricMapper = metricMapper;
         this.alertMapper = alertMapper;

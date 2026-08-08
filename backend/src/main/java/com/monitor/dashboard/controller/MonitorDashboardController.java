@@ -1,7 +1,7 @@
 package com.monitor.dashboard.controller;
 
 import com.monitor.dashboard.common.R;
-import com.monitor.dashboard.service.DashboardService;
+import com.monitor.dashboard.service.MonitorDashboardService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,11 +10,11 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/dashboard")
-public class DashboardController {
+public class MonitorDashboardController {
 
-    private final DashboardService svc;
+    private final MonitorDashboardService svc;
 
-    public DashboardController(DashboardService svc) {
+    public MonitorDashboardController(MonitorDashboardService svc) {
         this.svc = svc;
     }
 

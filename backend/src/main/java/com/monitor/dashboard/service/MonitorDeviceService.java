@@ -13,13 +13,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class DeviceService {
+public class MonitorDeviceService {
 
     private final DeviceMapper deviceMapper;
     private final DeviceMetricMapper metricMapper;
     private final CacheManager cacheManager;
 
-    public DeviceService(DeviceMapper deviceMapper,
+    public MonitorDeviceService(DeviceMapper deviceMapper,
                          DeviceMetricMapper metricMapper,
                          CacheManager cacheManager) {
         this.deviceMapper = deviceMapper;

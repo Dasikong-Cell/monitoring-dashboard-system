@@ -2,7 +2,7 @@ package com.monitor.dashboard.controller;
 
 import com.monitor.dashboard.common.R;
 import com.monitor.dashboard.entity.Device;
-import com.monitor.dashboard.service.DeviceService;
+import com.monitor.dashboard.service.MonitorDeviceService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,11 +10,11 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/devices")
-public class DeviceController {
+public class MonitorDeviceController {
 
-    private final DeviceService deviceService;
+    private final MonitorDeviceService deviceService;
 
-    public DeviceController(DeviceService deviceService) {
+    public MonitorDeviceController(MonitorDeviceService deviceService) {
         this.deviceService = deviceService;
     }
 

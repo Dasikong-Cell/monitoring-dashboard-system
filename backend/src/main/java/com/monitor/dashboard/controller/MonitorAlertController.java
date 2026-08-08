@@ -1,7 +1,7 @@
 package com.monitor.dashboard.controller;
 
 import com.monitor.dashboard.common.R;
-import com.monitor.dashboard.service.AlertService;
+import com.monitor.dashboard.service.MonitorAlertService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,11 +9,11 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/alerts")
-public class AlertController {
+public class MonitorAlertController {
 
-    private final AlertService alertService;
+    private final MonitorAlertService alertService;
 
-    public AlertController(AlertService alertService) {
+    public MonitorAlertController(MonitorAlertService alertService) {
         this.alertService = alertService;
     }
 

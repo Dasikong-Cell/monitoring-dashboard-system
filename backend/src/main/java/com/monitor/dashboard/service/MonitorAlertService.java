@@ -13,12 +13,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class AlertService {
+public class MonitorAlertService {
 
     private final AlertMapper alertMapper;
     private final CacheManager cacheManager;
 
-    public AlertService(AlertMapper alertMapper, CacheManager cacheManager) {
+    public MonitorAlertService(AlertMapper alertMapper, CacheManager cacheManager) {
         this.alertMapper = alertMapper;
         this.cacheManager = cacheManager;
     }

@@ -18,14 +18,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class DashboardService {
+public class MonitorDashboardService {
 
     private final DeviceMapper deviceMapper;
     private final AlertMapper alertMapper;
     private final AccessLogMapper accessLogMapper;
     private final CacheManager cacheManager;
 
-    public DashboardService(DeviceMapper deviceMapper,
+    public MonitorDashboardService(DeviceMapper deviceMapper,
                             AlertMapper alertMapper,
                             AccessLogMapper accessLogMapper,
                             CacheManager cacheManager) {

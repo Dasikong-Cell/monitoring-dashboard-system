@@ -11,12 +11,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Service
-public class MonitorService {
+public class MonitorSystemService {
 
     private final DeviceMapper deviceMapper;
     private final CacheManager cacheManager;
 
-    public MonitorService(DeviceMapper deviceMapper, CacheManager cacheManager) {
+    public MonitorSystemService(DeviceMapper deviceMapper, CacheManager cacheManager) {
         this.deviceMapper = deviceMapper;
         this.cacheManager = cacheManager;
     }
