@@ -1,14 +1,20 @@
 <template>
-  <div id="scaler" ref="scalerRef" :style="scaleStyle">
-    <Dashboard />
-  </div>
+  <template v-if="route.path === '/'">
+    <div id="scaler" ref="scalerRef" :style="scaleStyle">
+      <Dashboard />
+    </div>
+  </template>
+  <MainLayout v-else />
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { useRoute } from 'vue-router'
 import Dashboard from './views/Dashboard.vue'
+import MainLayout from './layout/MainLayout.vue'
 
-// 设计稿基准 1920x1080
+const route = useRoute()
+
 const W = 1920, H = 1080
 const scale = ref(1)
 

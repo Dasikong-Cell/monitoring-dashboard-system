@@ -1,11 +1,27 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [vue()],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+      '@styles': resolve(__dirname, 'src/styles')
+    }
+  },
+  css: {
+    preprocessorOptions: {},
+    resolve: {
+      alias: {
+        '@styles': resolve(__dirname, 'src/styles')
+      }
+    }
+  },
   server: {
     port: 5175,
     host: true,
+    historyApiFallback: true,
     proxy: {
       '/api': {
         target: 'http://localhost:8089',
@@ -13,6 +29,9 @@ export default defineConfig({
         ws: true
       }
     }
+  },
+  preview: {
+    historyApiFallback: true
   },
   build: {
     target: 'es2020',
