@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -39,11 +38,6 @@ public class DashboardController {
         return R.ok(svc.alertLevel());
     }
 
-    @GetMapping("/alerts")
-    public R<List<Map<String, Object>>> alerts() {
-        return R.ok(svc.latestAlerts());
-    }
-
     @GetMapping("/flow")
     public R<Map<String, Object>> flow() {
         return R.ok(svc.flowTargets());
@@ -52,20 +46,5 @@ public class DashboardController {
     @GetMapping("/flow-trend")
     public R<Map<String, Object>> flowTrend() {
         return R.ok(svc.flowTrend());
-    }
-
-    @GetMapping("/metrics")
-    public R<List<Map<String, Object>>> metrics() {
-        return R.ok(svc.deviceMetrics());
-    }
-
-    @GetMapping("/health")
-    public R<Map<String, Object>> health() {
-        return R.ok(svc.health());
-    }
-
-    @GetMapping("/runtime")
-    public R<Map<String, Object>> runtime() {
-        return R.ok(svc.runtimeMetrics());
     }
 }
