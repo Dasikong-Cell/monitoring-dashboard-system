@@ -276,6 +276,21 @@ public void tick() {
 
 ---
 
+## 安全与部署
+
+本仓库已落实以下生产就绪与安全加固：
+
+- **密钥外置**：`DB_PASSWORD`、微信密钥等均通过环境变量注入（见 `.env.example`），生产务必覆盖默认值。
+- **Actuator 健康端点**：引入 `spring-boot-starter-actuator`，仅暴露 `health`、`info`；`health` 的详细信息 `show-details: when_authorized`（携带有效凭证才展示），且已排除在鉴权拦截之外。
+- **接口鉴权总开关**：新增 `AuthInterceptor`，由环境变量 `REQUIRE_AUTH` 控制（默认 `false`，保持与原行为兼容）。置为 `true` 后，非 GET 的 `/api/**` 必须携带 `Bearer Token`；只读 GET 与 `/api/actuator/**` 始终放行。当前服务未签发 JWT，开启后仅做「是否携带 Bearer」准入校验，如需严格验签请补充 JWT 逻辑。
+- **CORS 必须配置**：生产环境请设置环境变量 `CORS_ALLOWED_ORIGINS`（逗号分隔的允许来源），不再使用通配符配合凭证。`backend/src/main/resources/application.yml` 中默认仅放开本地前端来源。
+- **不回显内部异常**：全局异常处理器对未捕获异常统一返回「服务器内部错误」，完整堆栈仅记录在服务端日志。
+- **结构化日志**：`backend/src/main/resources/logback-spring.xml` 输出控制台 + 滚动文件，应用包 `INFO`、MyBatis/SQL 日志降为 `WARN`（已关闭 `StdOutImpl`，避免完整 SQL 与参数打印到 stdout）。
+- **Docker 镜像对齐**：`Dockerfile` 基础镜像升级为 `eclipse-temurin:21-jre-alpine`，容器端口固定 `8080`；`docker-compose.yml` 已通过 `SPRING_DATASOURCE_*` 将后端数据源接通到 `mysql` 服务（库名 `monitor_dashboard`），不再依赖硬编码的 `localhost`。
+- **CI**：`.github/workflows/ci.yml` 使用 JDK 21 + `mvn -B test` 进行构建与测试。
+
+---
+
 ## 许可证
 
 [MIT License](./LICENSE) © 2025

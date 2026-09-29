@@ -29,7 +29,8 @@ spring:
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 不再把完整 SQL（含参数）打印到 stdout，改为走 Slf4j（由 logback 控制级别）
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
   global-config:
     db-config:
       id-type: auto
@@ -37,6 +38,15 @@ mybatis-plus:
       logic-delete-value: 1
       logic-not-delete-value: 0
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: when_authorized
+
 logging:
   level:
-    com.monitor.dashboard: debug
+    com.monitor.dashboard: info

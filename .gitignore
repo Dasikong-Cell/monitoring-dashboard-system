@@ -25,3 +25,6 @@ Thumbs.db
 
 # Redis/Meta
 dump.rdb
+
+# 离线推送导出目录（由 export_commit.sh 生成，勿纳入版本控制）
+_push2/
